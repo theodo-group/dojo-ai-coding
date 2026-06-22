@@ -14,14 +14,16 @@ Claude Code faire le gros du travail. Tu ne codes pas tout toi-même : tu **pilo
 
 ---
 
-## 1. Prérequis (une seule chose à installer)
+## 1. Prérequis
 
-1. **Node.js 24+** (LTS) — https://nodejs.org → ça fait tourner Claude Code **et** l'appli moderne.
-2. **Claude Code** (utilise le Node que tu viens d'installer) :
-   ```bash
-   npm install -g @anthropic-ai/claude-code
-   ```
-3. Lance `claude` une fois et connecte-toi.
+1. **Claude Code Desktop** — télécharge l'application (macOS / Windows), installe-la et connecte-toi : https://claude.com/claude-code
+2. **Node.js 24+** (LTS) — https://nodejs.org → nécessaire pour lancer l'appli moderne (`npm run dev`).
+
+Récupère ensuite ce projet, puis **ouvre le dossier dans Claude Code Desktop** : c'est là que tu lanceras les commandes (`/grill-with-docs`, `/to-prd`, …).
+
+```bash
+git clone https://github.com/theodo-group/dojo-ai-coding.git
+```
 
 > Docker est **optionnel** : il ne sert qu'à voir tourner l'ancienne appli `legacy/`.
 > `modern/` n'a besoin que de Node.
@@ -60,7 +62,7 @@ données que le legacy.
 
 ## 4. La méthode de migration (à appliquer page par page)
 
-Pour **chaque page**, dans Claude Code (depuis le dossier `modern/`), on enchaîne 4 temps :
+Pour **chaque page**, dans **Claude Code Desktop** (le projet ouvert, en travaillant dans `modern/`), on enchaîne 4 temps :
 
 | Étape | Commande | Ce qui se passe |
 |------|-----------|-----------------|
@@ -93,7 +95,7 @@ La navigation de `modern/` est ta feuille de route. On migre dans cet ordre :
 
 ## 6. Exemple guidé : la page « Société »
 
-Depuis `modern/`, dans Claude Code :
+Dans **Claude Code Desktop**, lance :
 
 ```
 /grill-with-docs migrer la page Société depuis legacy/www/modules/setup/company.php

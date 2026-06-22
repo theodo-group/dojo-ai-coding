@@ -37,9 +37,6 @@ Quand l'appli tourne, ouvre **http://localhost:3000** dans ton navigateur (login
 `admin` / `admin123`). Puis, dans Claude Code Desktop, **ouvre le dossier
 `dojo-ai-coding`** qui vient d'être cloné : c'est là que se passe toute la suite.
 
-> Docker est **optionnel** : il ne sert qu'à voir tourner l'ancienne appli `legacy/`.
-> `modern/` n'a besoin que de Node (que Claude Code vient d'installer pour toi).
-
 ---
 
 ## 2. (Optionnel) Voir tourner l'ancienne application
@@ -58,6 +55,8 @@ Elle se lance avec **Docker**. Copie-colle ce message dans Claude Code Desktop :
 Ouvre ensuite l'adresse indiquée (en général **http://localhost:8080**, login `admin` /
 `admin123`) et clique partout : tableau de bord, écritures, états, admin.
 **C'est ce produit qu'on remet à neuf.**
+
+![L'ancienne application Ketchup Compta (PHP, style 2006)](legacy/docs/screenshot.jpg)
 
 > ⚠️ Si l'installation de Docker ou le démarrage coince : **laisse tomber et continue le
 > tuto.** Voir tourner la legacy n'est pas nécessaire pour la migrer.
@@ -87,6 +86,10 @@ npm run dev        # http://localhost:3000  — login : admin / admin123
 ```
 
 Tu obtiens déjà : page d'accueil, connexion/déconnexion, navigation, tableau de bord.
+
+| Accueil | Tableau de bord |
+|---------|-----------------|
+| ![Accueil de la version moderne](docs/img/modern-home.png) | ![Tableau de bord de la version moderne](docs/img/modern-dashboard.png) |
 Les pages métier affichent « 🚧 Page à migrer » : **ce sont les emplacements à remplir.**
 La base SQLite est créée automatiquement au premier lancement, à partir des mêmes
 données que le legacy.

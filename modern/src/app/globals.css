@@ -1,0 +1,21 @@
+@import "tailwindcss";
+
+@theme {
+  --color-tomato-50: #fff1ef;
+  --color-tomato-100: #ffe0db;
+  --color-tomato-500: #e8503a;
+  --color-tomato-600: #d63c26;
+  --color-tomato-700: #b32f1d;
+  --color-ink: #1f2933;
+}
+
+:root {
+  color-scheme: light;
+}
+
+body {
+  background: #f6f7f9;
+  color: var(--color-ink);
+  font-family:
+    system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}

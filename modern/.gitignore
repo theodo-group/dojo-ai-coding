@@ -1,0 +1,11 @@
+node_modules/
+.next/
+out/
+build/
+
+# Base SQLite générée localement (rejouée depuis legacy/sql/ au premier lancement)
+data/
+
+*.tsbuildinfo
+next-env.d.ts
+.DS_Store

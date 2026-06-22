@@ -42,21 +42,28 @@ Quand l'appli tourne, ouvre **http://localhost:3000** dans ton navigateur (login
 
 ---
 
-## 2. Découvrir l'application à migrer
+## 2. (Optionnel) Voir tourner l'ancienne application
 
-C'est l'ancienne appli (dossier `legacy/`) que tu vas moderniser. Pour la voir tourner,
-**copie-colle ce message** dans Claude Code Desktop (accepte les commandes qu'il propose) :
+C'est l'ancienne appli (dossier `legacy/`) que tu vas moderniser. La faire tourner en local
+est **facultatif** : c'est sympa de la voir vivre, mais **si ça ne marche pas, ne perds pas
+de temps — passe directement à la suite.** Tu peux de toute façon lire son code dans
+`legacy/` quand tu veux, et comparer page par page pendant la migration.
 
-> Fais tourner l'ancienne application qui est dans le dossier `legacy/`. Installe ce qu'il
-> faut pour ça (Docker Desktop si nécessaire), démarre-la, et donne-moi l'adresse à ouvrir
-> dans mon navigateur. Explique-moi au fur et à mesure, en français.
+Elle se lance avec **Docker**. Copie-colle ce message dans Claude Code Desktop :
+
+> Fais tourner l'ancienne application du dossier `legacy/` avec Docker (installe Docker
+> Desktop si je ne l'ai pas). Démarre-la et donne-moi l'adresse à ouvrir dans mon
+> navigateur. Explique-moi au fur et à mesure, en français.
 
 Ouvre ensuite l'adresse indiquée (en général **http://localhost:8080**, login `admin` /
 `admin123`) et clique partout : tableau de bord, écritures, états, admin.
 **C'est ce produit qu'on remet à neuf.**
 
+> ⚠️ Si l'installation de Docker ou le démarrage coince : **laisse tomber et continue le
+> tuto.** Voir tourner la legacy n'est pas nécessaire pour la migrer.
+
 <details>
-<summary>Le lancer à la main (pour les curieux)</summary>
+<summary>Le lancer à la main</summary>
 
 ```bash
 cd legacy

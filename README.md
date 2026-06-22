@@ -44,16 +44,27 @@ Quand l'appli tourne, ouvre **http://localhost:3000** dans ton navigateur (login
 
 ## 2. Découvrir l'application à migrer
 
-L'ancienne appli (facultatif, si tu as Docker) :
+C'est l'ancienne appli (dossier `legacy/`) que tu vas moderniser. Pour la voir tourner,
+**copie-colle ce message** dans Claude Code Desktop (accepte les commandes qu'il propose) :
+
+> Fais tourner l'ancienne application qui est dans le dossier `legacy/`. Installe ce qu'il
+> faut pour ça (Docker Desktop si nécessaire), démarre-la, et donne-moi l'adresse à ouvrir
+> dans mon navigateur. Explique-moi au fur et à mesure, en français.
+
+Ouvre ensuite l'adresse indiquée (en général **http://localhost:8080**, login `admin` /
+`admin123`) et clique partout : tableau de bord, écritures, états, admin.
+**C'est ce produit qu'on remet à neuf.**
+
+<details>
+<summary>Le lancer à la main (pour les curieux)</summary>
 
 ```bash
 cd legacy
-docker-compose up -d
-open http://localhost:8080   # login : admin / admin123
+docker-compose up -d         # nécessite Docker
+# puis ouvre http://localhost:8080
 ```
 
-Clique partout : tableau de bord, écritures, états, admin. **C'est ce produit qu'on remet à neuf.**
-Si tu n'as pas Docker, ouvre les fichiers `legacy/www/` — c'est lisible.
+</details>
 
 ---
 

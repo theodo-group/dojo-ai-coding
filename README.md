@@ -34,8 +34,14 @@ Desktop. C'est lui qui s'occupe du reste (Node.js, récupération du projet, lan
    > tu fais, en français.
 
 Quand l'appli tourne, ouvre **http://localhost:3000** dans ton navigateur (login :
-`admin` / `admin123`). Puis, dans Claude Code Desktop, **ouvre le dossier
-`dojo-ai-coding`** qui vient d'être cloné : c'est là que se passe toute la suite.
+`admin` / `admin123`). Tu devrais voir l'accueil, puis le tableau de bord une fois connecté :
+
+| Accueil | Tableau de bord |
+|---------|-----------------|
+| ![Accueil de la version moderne](docs/img/modern-home.png) | ![Tableau de bord de la version moderne](docs/img/modern-dashboard.png) |
+
+Puis, dans Claude Code Desktop, **ouvre le dossier `dojo-ai-coding`** qui vient d'être
+cloné : c'est là que se passe toute la suite.
 
 ---
 
@@ -86,10 +92,6 @@ npm run dev        # http://localhost:3000  — login : admin / admin123
 ```
 
 Tu obtiens déjà : page d'accueil, connexion/déconnexion, navigation, tableau de bord.
-
-| Accueil | Tableau de bord |
-|---------|-----------------|
-| ![Accueil de la version moderne](docs/img/modern-home.png) | ![Tableau de bord de la version moderne](docs/img/modern-dashboard.png) |
 Les pages métier affichent « 🚧 Page à migrer » : **ce sont les emplacements à remplir.**
 La base SQLite est créée automatiquement au premier lancement, à partir des mêmes
 données que le legacy.
@@ -129,23 +131,65 @@ La navigation de `modern/` est ta feuille de route. On migre dans cet ordre :
 
 ---
 
-## 6. Exemple guidé : la page « Société »
+## 6. Exemple guidé : migrer la page « Société » pas à pas
 
-Dans **Claude Code Desktop**, lance :
+On déroule ensemble la page la plus simple. Fais-le dans **Claude Code Desktop**, projet
+`dojo-ai-coding` ouvert. Prends le temps de lire ce que l'IA répond à chaque étape — c'est
+toi qui valides.
+
+### Étape A — Cadrer la page avec `/grill-with-docs`
 
 ```
 /grill-with-docs migrer la page Société depuis legacy/www/modules/setup/company.php
 ```
 
-Réponds aux questions, puis :
+**Ce que ça fait :** Claude Code lit l'ancienne page PHP, puis **te pose des questions**
+pour être sûr d'avoir compris (quels champs ? que fait le bouton Enregistrer ? quelles
+règles ?). **Pourquoi :** mieux vaut clarifier *avant* de coder qu'après.
+**Toi :** réponds simplement. Si tu ne sais pas, dis-lui « regarde dans le legacy et
+propose » — il décide pour toi et explique.
+
+### Étape B — Écrire la spec avec `/to-prd`
 
 ```
 /to-prd
+```
+
+**Ce que ça fait :** transforme votre discussion en une **fiche claire et courte** (un
+« PRD ») enregistrée dans `docs/issues/societe/PRD.md`. **Pourquoi :** avoir noir sur blanc
+ce qu'on va construire. **Toi :** ouvre le fichier et survole-le pour vérifier que ça
+correspond à ce que tu veux.
+
+### Étape C — Découper en tickets avec `/to-issues`
+
+```
 /to-issues
 ```
 
-Puis implémente les tickets un par un (« implémente le ticket 01 »), lance `npm run dev`,
-ouvre **/admin/societe**, et compare au legacy. Quand ça correspond : page migrée ✅.
+**Ce que ça fait :** découpe la fiche en **petits tickets** (`docs/issues/societe/issues/01-….md`,
+`02-….md`…), chacun étant un petit morceau livrable de bout en bout. **Pourquoi :** avancer
+par petites étapes vérifiables plutôt que tout d'un coup. **Toi :** Claude Code te propose
+le découpage — dis si ça te va ou demande à regrouper/séparer.
+
+### Étape D — Implémenter, un ticket à la fois
+
+```
+implémente le ticket 01
+```
+
+**Ce que ça fait :** Claude Code écrit le vrai code dans `modern/` (la page, l'accès à la
+base, le formulaire). **Pourquoi :** un ticket = un petit pas facile à relire. **Toi :**
+laisse-le coder, puis enchaîne « implémente le ticket 02 », etc.
+
+### Étape E — Vérifier que ça marche
+
+L'appli tourne déjà (sinon : demande à Claude Code de la relancer, ou `npm run dev` dans
+`modern/`). Ouvre **http://localhost:3000/admin/societe** et **compare avec la même page du
+legacy** (`/modules/setup/company.php`). Coche les critères du ticket. Si quelque chose
+cloche, **dis-le à Claude Code** (« le champ Devise n'apparaît pas ») et il corrige.
+
+Quand la page moderne fait la même chose que l'ancienne : **page migrée ✅** — passe à la
+suivante.
 
 ---
 

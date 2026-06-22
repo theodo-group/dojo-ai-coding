@@ -16,17 +16,29 @@ Claude Code faire le gros du travail. Tu ne codes pas tout toi-même : tu **pilo
 
 ## 1. Prérequis
 
-1. **Claude Code Desktop** — télécharge l'application (macOS / Windows), installe-la et connecte-toi : https://claude.com/claude-code
-2. **Node.js 24+** (LTS) — https://nodejs.org → nécessaire pour lancer l'appli moderne (`npm run dev`).
+Pas besoin d'être technique : tu n'installes **qu'une seule chose toi-même**, Claude Code
+Desktop. C'est lui qui s'occupe du reste (Node.js, récupération du projet, lancement).
 
-Récupère ensuite ce projet, puis **ouvre le dossier dans Claude Code Desktop** : c'est là que tu lanceras les commandes (`/grill-with-docs`, `/to-prd`, …).
+1. **Installe Claude Code Desktop** — télécharge l'application (macOS / Windows),
+   installe-la et connecte-toi : https://claude.com/claude-code
+2. **Crée un dossier vide** quelque part de facile à retrouver — par exemple un dossier
+   `dojo` sur ton **Bureau**.
+3. **Ouvre ce dossier dans Claude Code Desktop** (bouton « Open folder » / « Ouvrir un dossier »).
+4. **Copie-colle ce message** dans Claude Code Desktop, puis laisse-le travailler. Il te
+   demandera l'autorisation d'exécuter des commandes → **accepte** :
 
-```bash
-git clone https://github.com/theodo-group/dojo-ai-coding.git
-```
+   > Installe Node.js version 24 ou plus si je ne l'ai pas déjà, de la manière la plus
+   > simple pour ma machine. Ensuite, clone le dépôt
+   > `https://github.com/theodo-group/dojo-ai-coding.git` dans ce dossier, installe les
+   > dépendances de `modern/` puis lance l'appli. Explique-moi au fur et à mesure ce que
+   > tu fais, en français.
+
+Quand l'appli tourne, ouvre **http://localhost:3000** dans ton navigateur (login :
+`admin` / `admin123`). Puis, dans Claude Code Desktop, **ouvre le dossier
+`dojo-ai-coding`** qui vient d'être cloné : c'est là que se passe toute la suite.
 
 > Docker est **optionnel** : il ne sert qu'à voir tourner l'ancienne appli `legacy/`.
-> `modern/` n'a besoin que de Node.
+> `modern/` n'a besoin que de Node (que Claude Code vient d'installer pour toi).
 
 ---
 
@@ -45,11 +57,14 @@ Si tu n'as pas Docker, ouvre les fichiers `legacy/www/` — c'est lisible.
 
 ---
 
-## 3. Lancer le squelette moderne
+## 3. Le squelette moderne
+
+Claude Code a déjà lancé l'appli à l'étape 1. Pour la **relancer** plus tard (ou si tu veux
+le faire toi-même), demande-le simplement à Claude Code, ou lance :
 
 ```bash
 cd modern
-npm install
+npm install        # la première fois seulement
 npm run dev        # http://localhost:3000  — login : admin / admin123
 ```
 

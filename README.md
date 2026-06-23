@@ -98,31 +98,26 @@ données que le legacy.
 
 ---
 
-## 4. La méthode de migration (à appliquer page par page)
+## 4. La méthode et l'ordre de migration (à lire — rien à faire ici)
 
-Pour **chaque page**, dans **Claude Code Desktop** (le projet ouvert, en travaillant dans `modern/`), on enchaîne 4 temps :
+**La méthode**, à appliquer pour **chaque page**, dans Claude Code Desktop (projet ouvert,
+on travaille dans `modern/`) :
 
-| Étape | Commande | Ce qui se passe |
+| Temps | Commande | Ce qui se passe |
 |------|-----------|-----------------|
 | 1. Cadrer | `/grill-with-docs` | L'IA te pose toutes les questions sur la page (comportement, champs, règles). Tu réponds. |
 | 2. Spécifier | `/to-prd` | L'IA résume la discussion en une spec concise (`docs/issues/<page>/PRD.md`). |
 | 3. Découper | `/to-issues` | L'IA découpe la spec en petits tickets indépendants. |
 | 4. Implémenter | (demande simple) | « Implémente le ticket 01 » → puis le 02, etc. |
 
-**Valider le travail** (à chaque page) :
-1. `npm run dev`, ouvre la page migrée, et **compare-la à la même page du legacy**.
-2. Coche les critères d'acceptation du ticket.
-3. *(bonus)* demande à Claude Code de lancer l'appli et de vérifier lui-même.
+Pour **valider** une page : ouvrir la page migrée, la **comparer à la même page du legacy**,
+et cocher les critères d'acceptation du ticket (au besoin, Claude Code peut vérifier lui-même).
 
 > 💡 Esprit du TP : tu **décris** ce que tu veux et tu **vérifies**. Laisse l'IA écrire le code.
 
----
+**L'ordre**, du plus simple au plus costaud (la navigation de `modern/` est la feuille de route) :
 
-## 5. L'ordre de migration (du plus simple au plus costaud)
-
-La navigation de `modern/` est ta feuille de route. On migre dans cet ordre :
-
-1. **Société** ← *on la fait ensemble en exemple* (un formulaire : lire + enregistrer)
+1. **Société** ← on la fait ensemble à l'étape 5 (un formulaire : lire + enregistrer)
 2. **Utilisateurs** (liste, puis création/édition)
 3. **Journaux** (petite liste)
 4. **Plan comptable** (liste de comptes)
@@ -131,7 +126,7 @@ La navigation de `modern/` est ta feuille de route. On migre dans cet ordre :
 
 ---
 
-## 6. Exemple guidé : migrer la page « Société » pas à pas
+## 5. Exemple guidé : migrer la page « Société » pas à pas
 
 On déroule ensemble la page la plus simple. Fais-le dans **Claude Code Desktop**, projet
 `dojo-ai-coding` ouvert. Prends le temps de lire ce que l'IA répond à chaque étape — c'est
@@ -140,7 +135,7 @@ toi qui valides.
 ### Étape A — Cadrer la page avec `/grill-with-docs`
 
 ```
-/grill-with-docs migrer la page Société depuis legacy/www/modules/setup/company.php
+/grill-with-docs migre la page Société
 ```
 
 **Ce que ça fait :** Claude Code lit l'ancienne page PHP, puis **te pose des questions**
@@ -188,14 +183,27 @@ L'appli tourne déjà (sinon : demande à Claude Code de la relancer, ou `npm ru
 legacy** (`/modules/setup/company.php`). Coche les critères du ticket. Si quelque chose
 cloche, **dis-le à Claude Code** (« le champ Devise n'apparaît pas ») et il corrige.
 
-Quand la page moderne fait la même chose que l'ancienne : **page migrée ✅** — passe à la
-suivante.
+Quand la page moderne fait la même chose que l'ancienne : **page migrée ✅**.
+
+Avant de passer à la page suivante, **repars d'une page blanche** : tape `/clear` dans
+Claude Code Desktop pour vider la conversation (le code, les specs et la mémoire du projet
+restent intacts). Fais-le aussi en cours de route si l'échange s'allonge et que l'IA
+s'embrouille.
 
 ---
 
-## 7. À toi de jouer
+## 6. À toi de jouer
 
-Refais exactement la même boucle pour les pages suivantes (Utilisateurs, Journaux, …).
+Refais exactement la même boucle (étapes A→E) pour les pages suivantes — pense à `/clear`
+entre chaque :
+
+1. ~~Société~~ (fait ensemble à l'étape 5)
+2. **Utilisateurs** (liste, puis création/édition)
+3. **Journaux** (petite liste)
+4. **Plan comptable** (liste de comptes)
+5. **Écritures** (liste, puis « Nouvelle écriture » — la plus complexe : partie double)
+6. **États** : Grand livre, Balance, Journal (calculs et totaux)
+
 Tu n'auras probablement pas le temps de tout finir en 2 h — l'important est de **maîtriser
 la méthode**. Le reste des pages est ton terrain d'entraînement.
 

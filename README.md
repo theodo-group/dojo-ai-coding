@@ -162,7 +162,7 @@ Ouvre ensuite l'adresse indiquée (en général **http://localhost:8080**, login
 > tuto.** Voir tourner la legacy n'est pas nécessaire pour la migrer.
 
 <details>
-<summary>Le lancer à la main</summary>
+<summary>Le lancer à la main dans le terminal</summary>
 
 ```bash
 cd legacy
@@ -176,7 +176,7 @@ docker-compose up -d         # nécessite Docker
 
 ## 3. Le squelette moderne
 
-Claude Code a déjà lancé l'appli à l'étape 1. Pour la **relancer** plus tard (ou si tu veux
+Claude Code a déjà lancé l'appli modernisée à l'étape 1. Pour la **relancer** plus tard (ou si tu veux
 le faire toi-même), demande-le simplement à Claude Code, ou lance :
 
 ```bash
@@ -218,7 +218,7 @@ et cocher les critères d'acceptation du ticket (au besoin, Claude Code peut vé
 2. **Utilisateurs** (liste, puis création/édition)
 3. **Journaux** (petite liste)
 4. **Plan comptable** (liste de comptes)
-5. **Écritures** (liste, puis « Nouvelle écriture » — la plus complexe : partie double)
+5. **Écritures** (liste, puis « Nouvelle écriture », la plus complexe : partie double)
 6. **États** : Grand livre, Balance, Journal (calculs et totaux)
 
 ---
@@ -227,7 +227,7 @@ et cocher les critères d'acceptation du ticket (au besoin, Claude Code peut vé
 
 On déroule ensemble la page la plus simple. Fais-le dans **Claude Code** (terminal), lancé
 depuis le dossier `dojo-ai-coding`. Prends le temps de lire ce que l'IA répond à chaque
-étape — c'est toi qui valides.
+étape : c'est toi qui valides.
 
 ### Étape A — Cadrer la page avec `/grill-with-docs`
 
@@ -239,7 +239,7 @@ depuis le dossier `dojo-ai-coding`. Prends le temps de lire ce que l'IA répond 
 pour être sûr d'avoir compris (quels champs ? que fait le bouton Enregistrer ? quelles
 règles ?). **Pourquoi :** mieux vaut clarifier *avant* de coder qu'après.
 **Toi :** réponds simplement. Si tu ne sais pas, dis-lui « regarde dans le legacy et
-propose » — il décide pour toi et explique.
+propose », il décide pour toi et explique.
 
 ### Étape B — Écrire la spec avec `/to-prd`
 
@@ -261,7 +261,7 @@ correspond à ce que tu veux.
 **Ce que ça fait :** découpe la fiche en **petits tickets** (`docs/issues/societe/issues/01-….md`,
 `02-….md`…), chacun étant un petit morceau livrable de bout en bout. **Pourquoi :** avancer
 par petites étapes vérifiables plutôt que tout d'un coup. **Toi :** Claude Code te propose
-le découpage — dis si ça te va ou demande à regrouper/séparer.
+le découpage : dis si ça te va ou demande à regrouper/séparer.
 
 ### Étape D — Implémenter, un ticket à la fois
 
@@ -290,17 +290,17 @@ intacts). Fais-le aussi en cours de route si l'échange s'allonge et que l'IA s'
 
 ## 6. À toi de jouer
 
-Refais exactement la même boucle (étapes A→E) pour les pages suivantes — pense à `/clear`
+Refais exactement la même boucle (étapes A→E) pour les pages suivantes, pense à `/clear`
 entre chaque :
 
 1. ~~Société~~ (fait ensemble à l'étape 5)
 2. **Utilisateurs** (liste, puis création/édition)
 3. **Journaux** (petite liste)
 4. **Plan comptable** (liste de comptes)
-5. **Écritures** (liste, puis « Nouvelle écriture » — la plus complexe : partie double)
+5. **Écritures** (liste, puis « Nouvelle écriture », la plus complexe : partie double)
 6. **États** : Grand livre, Balance, Journal (calculs et totaux)
 
-Tu n'auras probablement pas le temps de tout finir en 2 h — l'important est de **maîtriser
+Tu n'auras probablement pas le temps de tout finir en 2 h, l'important est de **maîtriser
 la méthode**. Le reste des pages est ton terrain d'entraînement.
 
 ---
@@ -333,7 +333,7 @@ choix des outils, puis déroule la méthode.
 ### Challenge 3 — La preuve par l'équivalence ⚖️ (boss final)
 
 Le Graal : **une seule suite de tests qui tourne à la fois sur le legacy ET sur l'appli
-moderne**, et compare leurs comportements — si les deux passent les mêmes scénarios, ta
+moderne**, et compare leurs comportements ; si les deux passent les mêmes scénarios, ta
 migration est fidèle, *prouvé* et non supposé. Démarre par `/grill-with-docs` pour concevoir
-l'approche, puis implémente-la page par page. (Il te faut les deux applis lancées — la
+l'approche, puis implémente-la page par page. (Il te faut les deux applis lancées : la
 legacy via Docker, étape 2.)

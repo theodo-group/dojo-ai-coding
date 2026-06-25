@@ -16,22 +16,67 @@ Claude Code faire le gros du travail. Tu ne codes pas tout toi-même : tu **pilo
 
 ## 1. Prérequis
 
-Pas besoin d'être technique : tu n'installes **qu'une seule chose toi-même**, Claude Code
-Desktop. C'est lui qui s'occupe du reste (Node.js, récupération du projet, lancement).
+Pour ce TP, tu utilises **Claude Code dans le terminal**, authentifié avec une **clé API
+Anthropic** (elle t'est fournie). Une fois Claude Code installé, c'est lui qui s'occupe du
+reste (Node.js, récupération du projet, lancement).
 
-1. **Installe Claude Code Desktop** — télécharge l'application (macOS / Windows),
-   installe-la et connecte-toi : https://claude.com/claude-code
-2. **Crée un dossier vide** quelque part de facile à retrouver — par exemple un dossier
-   `dojo` sur ton **Bureau**.
-3. **Ouvre ce dossier dans Claude Code Desktop** (bouton « Open folder » / « Ouvrir un dossier »).
-4. **Copie-colle ce message** dans Claude Code Desktop, puis laisse-le travailler. Il te
-   demandera l'autorisation d'exécuter des commandes → **accepte** :
+### 1.1 — Installer Claude Code et configurer la clé API
 
-   > Installe Node.js version 24 ou plus si je ne l'ai pas déjà, de la manière la plus
-   > simple pour ma machine. Ensuite, clone le dépôt
-   > `https://github.com/theodo-group/dojo-ai-coding.git` dans ce dossier, installe les
-   > dépendances de `modern/` puis lance l'appli. Explique-moi au fur et à mesure ce que
-   > tu fais, en français.
+Pour ne pas te perdre, on délègue l'installation à un assistant : **ouvre ChatGPT ou Claude
+dans ton navigateur**, colle le prompt ci-dessous et suis ses instructions pas à pas (il
+s'adapte à Mac, Linux ou Windows).
+
+<details>
+<summary>📋 Prompt d'installation — à copier-coller dans ChatGPT ou Claude (web)</summary>
+
+```
+Tu es un assistant technique patient et pédagogue.
+
+Aide-moi à installer et configurer Claude Code avec une clé API Anthropic que je possède déjà.
+
+Règles :
+
+* Une seule étape à la fois.
+* Attends ma réponse avant de continuer.
+* Adapte-toi à Mac, Linux ou Windows.
+* Vérifie d’abord si Claude Code est déjà installé.
+* Ne me demande jamais de partager ma clé API dans le chat.
+* Explique brièvement chaque commande avant de me demander de l’exécuter.
+* Si tu me poses une question, explique comment trouver la réponse.
+
+Objectif :
+
+1. Vérifier si Claude Code est installé.
+2. L’installer si nécessaire.
+3. Configurer la clé API.
+4. Vérifier qu’elle fonctionne.
+5. Lancer Claude Code dans un dossier de test.
+
+Important :
+
+* Explique qu’une variable d’environnement est généralement limitée à la session de terminal en cours.
+* À la fin, résume les étapes à refaire pour démarrer une nouvelle session Claude Code.
+* Explique aussi que l’utilisation d’une clé API Anthropic génère des coûts sur le compte associé à cette clé.
+
+Commence par me demander si je suis sur Mac, Linux ou Windows et si Claude Code est déjà installé.
+```
+
+</details>
+
+> 🔑 Garde ta clé API à portée de main, mais **ne la colle jamais dans le chat web** : tu la
+> saisiras uniquement dans ton terminal, comme l'assistant te l'indiquera.
+
+### 1.2 — Récupérer et lancer le projet
+
+Quand Claude Code tourne dans ton terminal (place-toi dans un dossier de ton choix, par ex.
+un dossier `dojo` sur ton Bureau), **colle ce message** dans Claude Code et laisse-le
+travailler (accepte les commandes qu'il propose) :
+
+> Installe Node.js version 24 ou plus si je ne l'ai pas déjà, de la manière la plus simple
+> pour ma machine. Ensuite, clone le dépôt
+> `https://github.com/theodo-group/dojo-ai-coding.git` dans ce dossier, installe les
+> dépendances de `modern/` puis lance l'appli. Explique-moi au fur et à mesure ce que tu
+> fais, en français.
 
 Quand l'appli tourne, ouvre **http://localhost:3000** dans ton navigateur (login :
 `admin` / `admin123`). Tu devrais voir l'accueil, puis le tableau de bord une fois connecté :
@@ -40,8 +85,8 @@ Quand l'appli tourne, ouvre **http://localhost:3000** dans ton navigateur (login
 |---------|-----------------|
 | ![Accueil de la version moderne](docs/img/modern-home.png) | ![Tableau de bord de la version moderne](docs/img/modern-dashboard.png) |
 
-Puis, dans Claude Code Desktop, **ouvre le dossier `dojo-ai-coding`** qui vient d'être
-cloné : c'est là que se passe toute la suite.
+Puis, dans ton terminal, place-toi dans le dossier cloné (`cd dojo-ai-coding`) et relance
+`claude` depuis là : c'est de ce dossier que se passe toute la suite.
 
 ---
 
@@ -52,7 +97,7 @@ est **facultatif** : c'est sympa de la voir vivre, mais **si ça ne marche pas, 
 de temps — passe directement à la suite.** Tu peux de toute façon lire son code dans
 `legacy/` quand tu veux, et comparer page par page pendant la migration.
 
-Elle se lance avec **Docker**. Copie-colle ce message dans Claude Code Desktop :
+Elle se lance avec **Docker**. Copie-colle ce message dans Claude Code :
 
 > Fais tourner l'ancienne application du dossier `legacy/` avec Docker (installe Docker
 > Desktop si je ne l'ai pas). Démarre-la et donne-moi l'adresse à ouvrir dans mon
@@ -100,8 +145,8 @@ données que le legacy.
 
 ## 4. La méthode et l'ordre de migration (à lire — rien à faire ici)
 
-**La méthode**, à appliquer pour **chaque page**, dans Claude Code Desktop (projet ouvert,
-on travaille dans `modern/`) :
+**La méthode**, à appliquer pour **chaque page**, dans Claude Code (lancé depuis le dossier
+du projet, on travaille dans `modern/`) :
 
 | Temps | Commande | Ce qui se passe |
 |------|-----------|-----------------|
@@ -128,9 +173,9 @@ et cocher les critères d'acceptation du ticket (au besoin, Claude Code peut vé
 
 ## 5. Exemple guidé : migrer la page « Société » pas à pas
 
-On déroule ensemble la page la plus simple. Fais-le dans **Claude Code Desktop**, projet
-`dojo-ai-coding` ouvert. Prends le temps de lire ce que l'IA répond à chaque étape — c'est
-toi qui valides.
+On déroule ensemble la page la plus simple. Fais-le dans **Claude Code** (terminal), lancé
+depuis le dossier `dojo-ai-coding`. Prends le temps de lire ce que l'IA répond à chaque
+étape — c'est toi qui valides.
 
 ### Étape A — Cadrer la page avec `/grill-with-docs`
 
@@ -186,9 +231,8 @@ cloche, **dis-le à Claude Code** (« le champ Devise n'apparaît pas ») et il 
 Quand la page moderne fait la même chose que l'ancienne : **page migrée ✅**.
 
 Avant de passer à la page suivante, **repars d'une page blanche** : tape `/clear` dans
-Claude Code Desktop pour vider la conversation (le code, les specs et la mémoire du projet
-restent intacts). Fais-le aussi en cours de route si l'échange s'allonge et que l'IA
-s'embrouille.
+Claude Code pour vider la conversation (le code, les specs et la mémoire du projet restent
+intacts). Fais-le aussi en cours de route si l'échange s'allonge et que l'IA s'embrouille.
 
 ---
 

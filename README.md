@@ -68,9 +68,48 @@ Commence par me demander si je suis sur Mac, Linux ou Windows et si Claude Code 
 
 ### 1.2 — Récupérer et lancer le projet
 
-Quand Claude Code tourne dans ton terminal (place-toi dans un dossier de ton choix, par ex.
-un dossier `dojo` sur ton Bureau), **colle ce message** dans Claude Code et laisse-le
-travailler (accepte les commandes qu'il propose) :
+1. **Crée un dossier** pour le TP (par exemple un dossier `dojo` sur ton **Bureau**).
+2. **Ouvre le terminal** et **place-toi dans ce dossier** (voir ci-dessous selon ta machine).
+
+<details>
+<summary>Ouvrir le terminal et aller dans le dossier (Mac / Windows / Linux)</summary>
+
+**macOS** — ouvre l'app **Terminal** (`Cmd + Espace`, tape « Terminal »), puis :
+```bash
+cd ~/Desktop/dojo
+```
+
+**Windows** — ouvre **PowerShell** (menu Démarrer, tape « PowerShell »), puis :
+```powershell
+cd $HOME\Desktop\dojo
+```
+
+**Linux** — ouvre ton terminal, puis :
+```bash
+cd ~/Desktop/dojo      # ou ~/Bureau/dojo selon la langue de ton système
+```
+
+💡 Astuce : tape `cd ` (avec l'espace), puis **glisse-dépose le dossier** depuis le
+Finder / l'Explorateur dans la fenêtre du terminal — le chemin se remplit tout seul. Valide
+avec **Entrée**.
+
+</details>
+
+3. **Lance Claude Code** depuis ce dossier, en lui donnant ta clé API :
+   ```bash
+   # macOS / Linux
+   export ANTHROPIC_API_KEY="colle-ta-clé-ici"
+   claude
+   ```
+   ```powershell
+   # Windows (PowerShell)
+   $env:ANTHROPIC_API_KEY="colle-ta-clé-ici"
+   claude
+   ```
+   > La clé ne « survit » pas d'une session de terminal à l'autre : si tu ouvres une nouvelle
+   > fenêtre, refais la commande `export` / `$env:` ci-dessus avant de relancer `claude`.
+
+4. **Colle ce message** dans Claude Code et laisse-le travailler (accepte les commandes qu'il propose) :
 
 > Installe Node.js version 24 ou plus si je ne l'ai pas déjà, de la manière la plus simple
 > pour ma machine. Ensuite, clone le dépôt
@@ -85,8 +124,16 @@ Quand l'appli tourne, ouvre **http://localhost:3000** dans ton navigateur (login
 |---------|-----------------|
 | ![Accueil de la version moderne](docs/img/modern-home.png) | ![Tableau de bord de la version moderne](docs/img/modern-dashboard.png) |
 
-Puis, dans ton terminal, place-toi dans le dossier cloné (`cd dojo-ai-coding`) et relance
-`claude` depuis là : c'est de ce dossier que se passe toute la suite.
+Enfin, place-toi dans le dossier cloné et relance Claude Code depuis là — c'est de ce
+dossier que se passe toute la suite :
+
+```bash
+cd dojo-ai-coding
+claude
+```
+
+> Tu es dans la même fenêtre de terminal qu'à l'étape 3 : ta clé API est encore active, rien
+> à re-saisir.
 
 ---
 
@@ -95,12 +142,15 @@ Puis, dans ton terminal, place-toi dans le dossier cloné (`cd dojo-ai-coding`) 
 C'est l'ancienne appli (dossier `legacy/`) que tu vas moderniser. La faire tourner en local
 est **facultatif** : c'est sympa de la voir vivre, mais **si ça ne marche pas, ne perds pas
 de temps — passe directement à la suite.** Tu peux de toute façon lire son code dans
-`legacy/` quand tu veux, et comparer page par page pendant la migration.
+`legacy/` quand tu veux (vois [`legacy/README.md`](legacy/README.md) pour comprendre comment
+elle fonctionne), et comparer page par page pendant la migration.
 
 Elle se lance avec **Docker**. Copie-colle ce message dans Claude Code :
 
-> Fais tourner l'ancienne application du dossier `legacy/` avec Docker (installe Docker
-> Desktop si je ne l'ai pas). Démarre-la et donne-moi l'adresse à ouvrir dans mon
+> Je veux faire tourner l'ancienne application du dossier `legacy/` avec Docker. Vérifie
+> si Docker est installé ; si non, **guide-moi pas à pas pour installer Docker Desktop**
+> (donne-moi le lien et les étapes adaptées à ma machine — c'est moi qui l'installerai).
+> Une fois Docker prêt, démarre l'application et donne-moi l'adresse à ouvrir dans mon
 > navigateur. Explique-moi au fur et à mesure, en français.
 
 Ouvre ensuite l'adresse indiquée (en général **http://localhost:8080**, login `admin` /
@@ -140,6 +190,9 @@ Tu obtiens déjà : page d'accueil, connexion/déconnexion, navigation, tableau 
 Les pages métier affichent « 🚧 Page à migrer » : **ce sont les emplacements à remplir.**
 La base SQLite est créée automatiquement au premier lancement, à partir des mêmes
 données que le legacy.
+
+Pour comprendre comment ce squelette est construit (auth par cookie, navigation, accès
+SQLite), tout est détaillé dans [`modern/README.md`](modern/README.md).
 
 ---
 
@@ -253,6 +306,35 @@ la méthode**. Le reste des pages est ton terrain d'entraînement.
 
 ---
 
-### Pour aller plus loin
-- `modern/README.md` — comment le squelette est construit (auth, navigation, base de données).
-- `legacy/README.md` — comment fonctionne l'ancienne appli.
+## 7. 🏆 Challenges bonus (pour les plus rapides)
+
+Tu as migré plusieurs pages et tu en redemandes ? Voici trois défis de difficulté croissante.
+
+**La bonne façon de t'y prendre :** pour chaque défi, **commence par `/grill-with-docs`** en
+décrivant ce que tu veux faire, et laisse l'IA te poser ses questions pour bien cadrer.
+On ne lance pas l'IA tête baissée : on se fait d'abord interroger.
+
+### Challenge 1 — Muscler l'architecture 🏗️
+
+Maintenant que `modern/` grandit, fais-le auditer avec une skill dédiée :
+
+```
+/improve-codebase-architecture
+```
+
+Elle scanne le code, te présente les points faibles, puis te **grille** sur l'amélioration
+que tu choisis avant de l'appliquer (même esprit que `/grill-with-docs`).
+
+### Challenge 2 — Le filet de sécurité : les tests 🧪
+
+Mets en place des **tests unitaires** (la logique) et **end-to-end** (les parcours
+utilisateur) pour l'appli moderne. Lance `/grill-with-docs` pour cadrer le périmètre et le
+choix des outils, puis déroule la méthode.
+
+### Challenge 3 — La preuve par l'équivalence ⚖️ (boss final)
+
+Le Graal : **une seule suite de tests qui tourne à la fois sur le legacy ET sur l'appli
+moderne**, et compare leurs comportements — si les deux passent les mêmes scénarios, ta
+migration est fidèle, *prouvé* et non supposé. Démarre par `/grill-with-docs` pour concevoir
+l'approche, puis implémente-la page par page. (Il te faut les deux applis lancées — la
+legacy via Docker, étape 2.)

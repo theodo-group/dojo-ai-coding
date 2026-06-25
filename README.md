@@ -124,16 +124,15 @@ Quand l'appli tourne, ouvre **http://localhost:3000** dans ton navigateur (login
 |---------|-----------------|
 | ![Accueil de la version moderne](docs/img/modern-home.png) | ![Tableau de bord de la version moderne](docs/img/modern-dashboard.png) |
 
-Enfin, place-toi dans le dossier cloné et relance Claude Code depuis là — c'est de ce
-dossier que se passe toute la suite :
+Enfin, on bascule dans le dossier cloné — c'est de là que se passe toute la suite.
+**Quitte d'abord Claude Code** (tape `/exit`), puis :
 
 ```bash
 cd dojo-ai-coding
 claude
 ```
 
-> Tu es dans la même fenêtre de terminal qu'à l'étape 3 : ta clé API est encore active, rien
-> à re-saisir.
+> Même fenêtre de terminal qu'à l'étape 3 : ta clé API est encore active, rien à re-saisir.
 
 ---
 
